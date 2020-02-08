@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+<meta charset = "UTF-8">
+<u id = "text"> <font size = "2" color = "brown" face = "Arial"> Нажмите на колоду, чтобы открыть карту</u>
+<br><br>
+	</head>
+	<body>
+		
+<input type="image" id = "myb" onclick =  "changeImage()" src="Shirt.jpg" width = "200" height = "210">
+
+
+		
+		<ls id = "list"></div>
+
+
+		<script>
+
+		var i = 0;
+		var randArray = ["6.jpg", "7.jpg", "8.jpg", "9.jpg","10.jpg","11.jpg","12.jpg","13.jpg","14.jpg"];
+		var imageArray = [];
+		var rundomnumber;
+		var flag = 0;
+		
+		var current = 0;
+		while(current < 9)
+		{
+			var number = Math.random() * 8;
+			number = Math.round(number);	
+
+			for (let j = 0; j < current; j++)
+			{
+				if(imageArray[j] == number)
+				flag = 1;
+			}
+			
+			if (flag == 0)
+			{
+				imageArray[current] = number;
+				current++;
+			}
+			else
+				flag = 0;
+
+
+		}
+
+
+		for (let j = 0; j < 9; j++)
+			{
+				//alert(imageArray[j]);
+
+			}
+
+		current = 0;
+		while(current < 9)
+		{
+			imageArray[current] = randArray[imageArray[current]];
+			current++;
+		} 
+
+function changeImage()
+		{
+		if (i<9)
+			{
+			var elem = document.createElement("img");
+			elem.src = imageArray[i];
+			elem.width="200";
+			elem.height="210";	
+			//elem.innerHTML = imageArray[i];
+			document.getElementById("list").appendChild(elem);
+			
+			if (i == 8)
+			{
+				myb.src="End.jpg";
+				text.innerText = "Колода закончилась";
+				text.style.color = "brown";
+
+			}
+			//document.getElementById('myb').remove();
+			i++;
+			}
+
+		}
+		</script>
+
+
+	
+
+	</body>
+</html>
